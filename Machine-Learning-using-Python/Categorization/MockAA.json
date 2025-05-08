@@ -1,0 +1,66 @@
+{
+  "consentId": "baf9d5e2-14c4-4f90-b5b3-3e54a347dbf1",
+  "userId": "arun.sharma@finvu",
+  "timestamp": "2025-05-05T12:43:21Z",
+  "linkedAccounts": [
+    {
+      "accountId": "91aef4f7-e14b-4b03-921d-dc4f3bd8a90d",
+      "bank": "HDFC Bank",
+      "accountNumberMasked": "XXXXXX1234",
+      "accountType": "Loan Account",
+      "loanDetails": {
+        "loanType": "Home Loan",
+        "loanStartDate": "2022-06-01",
+        "principalAmount": 4500000,
+        "emiAmount": 38200,
+        "tenureInMonths": 180,
+        "remainingEMIs": 155,
+        "nextDueDate": "2025-06-01",
+        "lastPaymentDate": "2025-05-01",
+        "lastPaymentStatus": "On Time"
+      }
+    },
+    {
+      "accountId": "a77f45b3-711a-4f5a-b02c-4c5139e39e84",
+      "bank": "Axis Bank",
+      "accountNumberMasked": "XXXXXX8891",
+      "accountType": "Loan Account",
+      "loanDetails": {
+        "loanType": "Personal Loan",
+        "loanStartDate": "2024-02-15",
+        "principalAmount": 300000,
+        "emiAmount": 9350,
+        "tenureInMonths": 36,
+        "remainingEMIs": 22,
+        "nextDueDate": "2025-06-10",
+        "lastPaymentDate": "2025-04-10",
+        "lastPaymentStatus": "Delayed"
+      }
+    },
+    {
+      "accountId": "cc90ff2c-232a-4191-9b3c-87e8390f3a09",
+      "bank": "ICICI Bank",
+      "accountNumberMasked": "XXXXXX9977",
+      "accountType": "Credit Card",
+      "loanDetails": {
+        "loanType": "EMI on Credit Card",
+        "loanStartDate": "2023-09-20",
+        "principalAmount": 72000,
+        "emiAmount": 6000,
+        "tenureInMonths": 12,
+        "remainingEMIs": 4,
+        "nextDueDate": "2025-05-25",
+        "lastPaymentDate": "2025-04-25",
+        "lastPaymentStatus": "On Time"
+      }
+    }
+  ],
+  "summary": {
+    "totalActiveEMIs": 3,
+    "totalMonthlyEMIAmount": 53550,
+    "regularEMIPayments": 2,
+    "lateEMIPayments": 1,
+    "overallEMIBehavior": "Moderately Regular"
+  },
+  "remarks": "User has consistently paid 2 of 3 EMIs on time. One delay in personal loan noted in April 2025."
+}
