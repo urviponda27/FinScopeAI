@@ -1,40 +1,54 @@
 # FinScopeAI
 
-**Smart Loan Evaluation Assistant — Built for Ignosis Fintech Hackathon**
+💡 Smart Credit Evaluation System — Built for Ignosis Fintech Hackathon
 
-FinScopeAI is an intelligent credit evaluation system that helps fintech professionals assess a user’s financial behavior and loan eligibility. It combines AI/ML-driven transaction analysis, simulated AA data handling, and a real-time dashboard to deliver actionable insights and credit improvement strategies.
-
----
-
-## 🚀 Key Features
-
-- 🔍 Categorizes transactions using Naive Bayes (e.g., Food, Entertainment)
-- 📊 Generates credit score based on user income, spending, and EMI behavior
-- 📈 Provides smart suggestions and spending simulations to improve score
-- 📄 Accepts PDF bank statements and consent ID (AA-style input)
-- 🧠 Built to seamlessly integrate with official Account Aggregator framework
+FinScopeAI is an intelligent creditworthiness assessment platform built for financial institutions and loan processing teams. It leverages user-uploaded PDFs and simulated AA data to evaluate financial behavior, generate a credit score, and provide actionable suggestions — all within a real-time dashboard experience.
 
 ---
 
-## 🧠 How It Works
+## 🚀 Core Features
 
-1. User submits **PDF bank statement** + **Consent ID** via frontend form  
-2. Python ML backend:
-   - Extracts transactions from PDF
-   - Categorizes them into spending areas
-   - Processes EMI behavior from mock AA response
-   - Calculates credit score and suggestions
-3. Spring Boot syncs all data into MySQL  
-4. React frontend displays clean **dashboard analysis & simulations**
+- 🔍 Naive Bayes–based categorization of user transactions (Food, Entertainment, Bills, etc.)
+- 📊 Credit score generation based on income, expenses, and EMI behavior
+- 📈 Personalized suggestions and simulations to help users improve credit scores
+- 📄 Accepts PDF bank statements & consent ID inputs from frontend
+- 🧠 Seamless future-ready support for Account Aggregator (AA) framework integration
+
+---
+
+## 🧠 Account Aggregator Alignment
+
+We fully understand the Account Aggregator (AA) Framework established by RBI and have engineered our system with forward compatibility in mind. In a typical flow, an RBI-registered FIU (Financial Information User) uses AA to collect user consent and receive structured transaction data via a consentId.
+
+Currently, since we are not an FIU and don’t have AA access, we simulate this process responsibly:
+
+- We built a custom consent form on the frontend, where the user enters their details and Consent ID
+- The backend treats this input just like a real consent-based data retrieval
+- We use mock JSON responses that reflect real AA output structure
+- The entire data flow is modeled to plug directly into real AA APIs when access is granted — with minimal or no refactoring
+
+On the transaction side, we accept PDF bank statements for now. Once AA data is available, we will directly parse transaction entries from the AA JSON response instead of PDFs. Our PDF parser is designed to work on structured statements with consistent formatting.
+
+💬 In short: We’ve built everything around the real AA framework model — with current constraints handled using smart simulations. We are AA-ready by design.
+
+---
+
+## 📈 How It Works
+
+1. User submits their bank statement (PDF) + Consent ID
+2. Python ML engine extracts transaction history and classifies each entry
+3. Simulated AA data feeds EMI and income behavior
+4. Credit score + suggestions are generated and stored in MySQL via Spring Boot
+5. React dashboard shows breakdowns, scores, and what-if simulations
 
 ---
 
 ## 🧪 Tech Stack
 
-- **Frontend** – React.js  
-- **Backend** – Spring Boot (Java)  
-- **ML Engine** – Python + Flask  
-- **Database** – MySQL  
+- React.js – Dynamic and responsive frontend
+- Spring Boot – Backend API & business logic
+- Python (Flask) – ML for categorization & suggestion engine
+- MySQL – Persistent storage
 
 ---
 
@@ -42,35 +56,24 @@ FinScopeAI is an intelligent credit evaluation system that helps fintech profess
 
 FinScopeAI/
 ├── Backend using Java Spring Boot/
-│ └── FinTech/
+│ └── FinTech/ # APIs, database services
 ├── Frontend using React/
-│ └── FinScopeAI/
+│ └── FinScopeAI/ # User interface and dashboard
 ├── Machine Learning using Python/
 │ ├── Categorization/
-│ │ └── app.py
+│ │ └── app.py # PDF parsing & ML categorization
 │ └── Suggestion/
-│ └── GenerateSuggestion.py
-
-
----
-
-## 🔐 Data Handling Note
-
-This project currently uses:
-- 🔸 PDF upload for bank transactions
-- 🔸 Custom form for consent ID
-
-> 🔧 These inputs **mimic** the Account Aggregator (AA) flow. No hardcoded data is used. The system is ready for real AA integration once FIU access is granted, requiring minimal changes.
+│ └── GenerateSuggestion.py # Suggestion logic & simulation
 
 ---
 
 ## 👥 Contributors
 
-- **Vishnu Burkhawala** – Python & Machine Learning, Spring Boot support  
-- **Urvi Ponda** – Complete Spring Boot Backend  
-- **Harshil Karia** – Complete React Frontend  
+- 🎯 Vishnu Burkhawala – Complete Python & Machine Learning, Spring Boot support  
+- 🛠️ Urvi Ponda – Complete Spring Boot backend  
+- 🎨 Harshil Karia – Complete React frontend  
 
 ---
 
-> 💼 Developed as a hackathon project at Ignosis Fintech, Ahmedabad  
-> 💡 Built with real-world integration and scalability in mind
+📍 Built for Ignosis Fintech Hackathon – Ahmedabad, Gujarat  
+🔧 Designed with real-world finance workflows & RBI-backed systems in mind
