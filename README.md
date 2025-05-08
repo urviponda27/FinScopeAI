@@ -38,8 +38,8 @@ On the transaction side, we accept PDF bank statements for now. Once AA data is 
 1. User submits their bank statement (PDF) + Consent ID
 2. Python ML engine extracts transaction history and classifies each entry
 3. Simulated AA data feeds EMI and income behavior
-4. Credit score + suggestions are generated and stored in MySQL via Spring Boot
-5. React dashboard shows breakdowns, scores, and what-if simulations
+4. Credit score + suggestions and what-if simulations are generated using ML engine and stored in MySQL via Spring Boot
+5. React dashboard shows breakdown pie-charts, scores, and what-if simulations
 
 ---
 
@@ -55,15 +55,14 @@ On the transaction side, we accept PDF bank statements for now. Once AA data is 
 ## 📦 Project Structure
 
 FinScopeAI/
-├── Backend using Java Spring Boot/
-│ └── FinTech/ # APIs, database services
-├── Frontend using React/
-│ └── FinScopeAI/ # User interface and dashboard
-├── Machine Learning using Python/
-│ ├── Categorization/
-│ │ └── app.py # PDF parsing & ML categorization
-│ └── Suggestion/
-│ └── GenerateSuggestion.py # Suggestion logic & simulation
+├── Backend (Java Spring Boot)
+│   └── FinTech Module – APIs, Database Services
+├── Frontend (React)
+│   └── FinScopeAI UI – Dashboard & User Interface
+├── Machine Learning (Python)
+│   ├── app.py – PDF Parsing & Categorization
+│   └── Suggestion/
+│       └── GenerateSuggestion.py – Suggestion Logic & Simulation
 
 ---
 
