@@ -74,7 +74,7 @@ def get_issues(summary):
     return issues
 
 def build_prompt(issues, tier):
-    prompt = "As a financial advisor, provide one short, actionable and personalized suggestion for each of the following financial issues:\n"
+    prompt = "As a financial advisor, provide exactly one short, actionable, and personalized suggestion for each of the following financial issues:\n"
     for issue in issues:
         if issue == "gambling":
             prompt += "- High gambling expenses\n"
@@ -84,7 +84,13 @@ def build_prompt(issues, tier):
             prompt += "- Savings rate is too low\n"
         elif issue == "NonEssentialSpending":
             prompt += "- Overspending on food, travel, entertainment, and shopping\n"
-    prompt += "\nRespond with one suggestion per line. Do not include any introduction, conclusion, or emojis in the response."
+
+    # Clear and strict instruction
+    prompt += (
+        "\nRespond with exactly one suggestion per line, matching the number of issues above.\n"
+        "Do not include any introduction, summary, filler, or emojis.\n"
+        "Only output the suggestions."
+    )
 
     if tier == "High Risk":
         prompt += " Use a serious and firm tone."
@@ -105,7 +111,9 @@ def call_llm(prompt):
         )
         lines = response.choices[0].message.content.strip().split("\n")
         suggestions = [line.strip("- ").strip() for line in lines if line.strip()]
-        return suggestions
+        # Filter out any non-actionable intros like "Here are the suggestions:"
+        filtered = [s for s in suggestions if not s.lower().startswith("here are")]
+        return filtered
     except Exception as e:
         print(f"API Error: {str(e)}")
         return [f"Error: {str(e)}"]
