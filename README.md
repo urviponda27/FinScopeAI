@@ -43,6 +43,23 @@ On the transaction side, we accept PDF bank statements for now. Once AA data is 
 
 ---
 
+## 📄 Sample PDF Formats
+
+As we do not currently have access to the live Account Aggregator (AA) system (since we are not an FIU), users upload PDF bank statements for transaction analysis. This is a temporary and intentional simulation step — not a limitation of our system.
+
+📂 Reference sample PDFs are available in the [`./Sample-Pdfs`](./Sample-Pdfs) folder.  
+These PDFs follow a standard tabular format with columns such as:
+
+- **Datetime**
+- **Description**
+- **Account Number**
+- **Type [debited/credited]**
+- **amount**
+
+Please ensure uploaded statements are digital, not scanned, and structured similarly for best results.
+
+---
+
 ## 🧪 Tech Stack
 
 - React.js – Dynamic and responsive frontend
@@ -56,21 +73,21 @@ On the transaction side, we accept PDF bank statements for now. Once AA data is 
 
 FinScopeAI/
 ├── Backend (Java Spring Boot)
-│   └── FinTech Module – APIs, Database Services
+│ └── FinTech Module – APIs, Database Services
 ├── Frontend (React)
-│   └── FinScopeAI UI – Dashboard & User Interface
+│ └── FinScopeAI UI – Dashboard & User Interface
 ├── Machine Learning (Python)
-│   ├── app.py – PDF Parsing & Categorization
-│   └── Suggestion/
-│       └── GenerateSuggestion.py – Suggestion Logic & Simulation
+│ ├── app.py – PDF Parsing & Categorization
+│ └── Suggestion/
+│ └── GenerateSuggestion.py – Suggestion Logic & Simulation
 
 ---
 
 ## 👥 Contributors
 
-- 🎯 Vishnu Burkhawala – Complete Python & Machine Learning, Spring Boot support  
-- 🛠️ Urvi Ponda – Complete Spring Boot backend  
-- 🎨 Harshil Karia – Complete React frontend  
+- 🎯 Vishnu Burkhawala – Complete Python & Machine Learning, Spring Boot support
+- 🛠️ Urvi Ponda – Complete Spring Boot backend
+- 🎨 Harshil Karia – Complete React frontend
 
 ---
 
