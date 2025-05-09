@@ -1,0 +1,21 @@
+{
+    "entertainment": 240174.92,
+    "food": 237781.57,
+    "gambling": 140645.19,
+    "income": 2100881.14,
+    "others": 391373.02,
+    "shopping": 275501.89,
+    "travel": 343730.98,
+    "utilities": 283902.73,
+    "savings": 187770.84,
+    "loantype": "HOME",
+    "consentId": "baf9d5e2-14c4-4f90-b5b3-3e54a347dbf1",
+    "userId": "5",
+    "totalActiveEMIs": 3,
+    "totalMonthlyEMIAmount": 53550,
+    "regularEMIPayments": 2,
+    "lateEMIPayments": 1,
+    "overallEMIBehavior": "Moderately Regular",
+    "EMIRemarks": "User has consistently paid 2 of 3 EMIs on time. One delay in personal loan noted in April 2025.",
+    "currCreditScore": 690
+}
