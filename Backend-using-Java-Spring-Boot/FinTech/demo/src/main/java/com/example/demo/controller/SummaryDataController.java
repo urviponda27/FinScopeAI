@@ -8,7 +8,7 @@ import com.example.demo.model.SummaryData;
 import com.example.demo.model.User;
 import com.example.demo.service.SummaryDataService;
 import com.example.demo.service.UserService;
-import jakarta.validation.Valid;
+// import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,8 @@ public class SummaryDataController {
 
     @Autowired
     // Constructor-based dependency injection
-    public SummaryDataController(SummaryDataService summaryDataService, UserService userService, UserRepository userRepository, SummaryDataRepository summaryDataRepository) {
+    public SummaryDataController(SummaryDataService summaryDataService, UserService userService,
+            UserRepository userRepository, SummaryDataRepository summaryDataRepository) {
         this.summaryDataService = summaryDataService;
         this.userService = userService;
         this.userRepository = userRepository;
@@ -75,7 +76,6 @@ public class SummaryDataController {
         FilteredSummaryDataDTO dto = summaryDataService.getSummaryByUserId(userId);
         return ResponseEntity.ok(dto);
     }
-
 
     // Global Exception Handler for ResourceNotFoundException
     @ExceptionHandler(ResourceNotFoundException.class)

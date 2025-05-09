@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
-
 import jakarta.persistence.*;
-import java.util.*;
+// import java.util.*;
 
 @Entity
 @Table(name = "updates")
@@ -33,20 +32,35 @@ public class Updates {
     }
 
     // Getters and Setters
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getCreditTier() { return creditTier; }
+    public String getCreditTier() {
+        return creditTier;
+    }
 
-    public void setCreditTier(String creditTier) { this.creditTier = creditTier; }
+    public void setCreditTier(String creditTier) {
+        this.creditTier = creditTier;
+    }
 
-    public String getSuggestionsJson() { return suggestionsJson; }
+    public String getSuggestionsJson() {
+        return suggestionsJson;
+    }
 
-    public void setSuggestionsJson(String suggestionsJson) { this.suggestionsJson = suggestionsJson; }
+    public void setSuggestionsJson(String suggestionsJson) {
+        this.suggestionsJson = suggestionsJson;
+    }
 
-    public User getUser() { return user; }
+    public User getUser() {
+        return user;
+    }
 
-    public void setUser(User user) { this.user = user; }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
-

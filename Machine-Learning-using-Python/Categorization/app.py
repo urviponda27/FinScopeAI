@@ -3,7 +3,7 @@ from flask_cors import CORS
 import subprocess
 
 app = Flask(__name__)
-CORS(app)  # or CORS(app, resources={r"/*": {"origins": "http://localhost:3002"}})
+CORS(app, origins="*")  # or CORS(app, resources={r"/*": {"origins": "http://localhost:3002"}})
 
 @app.route('/categorize_transaction', methods=['GET'])
 def categorize_transaction():
