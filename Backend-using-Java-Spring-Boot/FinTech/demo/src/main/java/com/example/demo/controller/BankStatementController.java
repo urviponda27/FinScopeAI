@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bank-statements")
-@CrossOrigin(origins = "http://localhost:3002")
+@CrossOrigin(origins = "*")
 public class BankStatementController {
 
     @Autowired

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Clients = () => {
   const navigate = useNavigate();
   const formatDate = (isoDate) => {
@@ -12,14 +13,18 @@ const Clients = () => {
   };
 
   const [clients, setClients] = useState([]);
-
+  const [isLoading,setIsLoading] = useState(false);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const getClients = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/users/all");
+      setIsLoading(true);
+      const response = await axios.get(`${baseUrl}/api/users/all`);
       console.log("Clients :- ", response.data);
       setClients(response.data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -33,6 +38,7 @@ const Clients = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-6 px-4 sm:px-6">
+      {isLoading && <LoadingSpinner/>}
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-xl shadow-md border border-indigo-100 p-6">
           <div className="">

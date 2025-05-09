@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/summary")
-@CrossOrigin(origins = "http://localhost:3002")
+@CrossOrigin(origins = "*")
 public class SummaryDataController {
 
     private final SummaryDataService summaryDataService;

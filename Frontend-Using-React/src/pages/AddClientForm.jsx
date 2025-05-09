@@ -23,6 +23,8 @@ const AddClientForm = ({ closeModal }) => {
     // console.log("Account Number :- ", accountNumber);
     // console.log("IFSC Code :- ", ifscCode);
     // console.log("PDF File :- ", pdfFile);
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const pythonUrl = import.meta.env.VITE_API_PYTHON_URL;
 
     try {
       setIsLoading(true)
@@ -38,7 +40,7 @@ const AddClientForm = ({ closeModal }) => {
       formData.append("pdfFile", pdfFile); // File object (not null)
 
       const response = await axios.post(
-        "http://localhost:8080/api/combined/register",
+        `${baseUrl}/api/combined/register`,
         formData,
         {
           headers: {
@@ -47,7 +49,7 @@ const AddClientForm = ({ closeModal }) => {
         }
       );
       const dummy = await axios.get(
-        `http://localhost:5000/categorize_transaction?user_id=${response.data}`
+        `${pythonUrl}/categorize_transaction?user_id=${response.data}`
       );
       console.log("Dummy Response :- ", dummy.data);
       console.log("Upload success", response.data);

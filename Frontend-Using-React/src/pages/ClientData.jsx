@@ -7,6 +7,7 @@ import ExpenseStatCard from "../components/ExpenseStatCard";
 import React, { useEffect, useState, useSyncExternalStore } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 
@@ -44,11 +45,14 @@ const ClientData = () => {
   const [creditScore, setCreditScore] = useState(0);
   const [expenseData, setExpenseData] = useState([]);
   const [suggestionData, setSuggestionData] = useState([]);
+  const [isLoading,setIsLoading] = useState(false)
   const navigate = useNavigate();
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const fetchUpdates = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/updates/user/${clientId}`);
-      const temp = await axios.get(`http://localhost:8080/api/summary/user/${clientId}`);
+      setIsLoading(true);
+      const response = await axios.get(`${baseUrl}/api/updates/user/${clientId}`);
+      const temp = await axios.get(`${baseUrl}/api/summary/user/${clientId}`);
 
       setCreditScore(temp.data.currCreditScore);
 
@@ -121,6 +125,8 @@ const ClientData = () => {
       console.log(temp.data);
     } catch (error) {
       console.error(error)
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -137,6 +143,7 @@ const ClientData = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-6 px-4 sm:px-6">
+    {isLoading && <LoadingSpinner/>}
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>

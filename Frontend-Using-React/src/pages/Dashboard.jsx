@@ -7,10 +7,12 @@ import RecentClientsTable from "../components/RecentClientsTable";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 
 const Dashboard = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [stats, setStats] = useState([
     { title: "Total Application", value: 0, icon: "total" },
     { title: "Approved Application", value: 0, icon: "approved" },
@@ -19,11 +21,13 @@ const Dashboard = () => {
   ]);
   const [clients,setClients] = useState([]);
   const [monthlyData,setMonthlyData] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const getClients = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/users/all");
+      setIsLoading(true);
+      const response = await axios.get(`${baseUrl}/api/users/all`);
       const allApps = response.data;
   
       console.log("Clients :- ", allApps);
@@ -59,6 +63,8 @@ const Dashboard = () => {
       
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   
@@ -72,6 +78,7 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-6 px-4 sm:px-6">
+      {isLoading && <LoadingSpinner/>}
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>

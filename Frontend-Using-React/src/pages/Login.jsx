@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify"
 
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useAsyncError, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading,setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const handleLogin = async () => {
     console.log(email);
     console.log(password);
@@ -18,7 +19,8 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:8080/api/employees/login", payload, {
+      setIsLoading(true);
+      const response = await axios.post(`${baseUrl}/api/employees/login`, payload, {
         headers: {
           "Content-Type": "application/json", // Ensure the content type is set to JSON
         },
@@ -36,6 +38,8 @@ const Login = () => {
       if (error.status === 400) {
         toast.error("Invalid Credentials");
       }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -109,9 +113,13 @@ const Login = () => {
             {/* Submit Button */}
             <button
               onClick={handleLogin}
-              className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-lg transition-colors font-medium"
+              className={`w-full py-2 rounded-lg mt-2 text-white ${isLoading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-indigo-600 hover:bg-indigo-700"
+                }`}
+              disabled={isLoading}
             >
-              Sign In
+              {isLoading ? "Adding Guest" : "Add Guest"}
             </button>
           </div>
         </div>
